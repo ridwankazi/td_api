@@ -1,6 +1,5 @@
 from flask import Blueprint, request, redirect
-from td_client.auth_utils import TDAuthSupport
-
+from td_api.td_client.auth_utils import TDAuthSupport
 oauth2_routes = Blueprint('oauth2', __name__, template_folder='templates', static_folder='static')
 
 @oauth2_routes.route('/secondroute', methods=['GET'])
@@ -8,7 +7,8 @@ def hello1():
     return "sup1"
 
 @oauth2_routes.route('/oauth_redirect', methods=['GET'])
-def oauth_redirect():
+def oauth_redirect(request):
+    
     url = TDAuthSupport.get_oauth_redirect_url()
     return redirect(url)
 

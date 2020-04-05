@@ -9,6 +9,7 @@ def hello1():
 
 @oauth2_routes.route('/oauth_redirect', methods=['GET'])
 def oauth_redirect():
+
     url = TDAuthSupport.get_oauth_redirect_url()
     return redirect(url)
 
