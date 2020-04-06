@@ -25,5 +25,5 @@ services:
     depends_on: 
       - td_api_db
     ports:
-      - "8080:8080"
+      # - "8080:8080"
       - "5000:5000"
