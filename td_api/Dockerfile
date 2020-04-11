@@ -12,7 +12,9 @@ RUN apk add --no-cache gcc musl-dev \
                        tk-dev \
                        tcl-dev \
                        harfbuzz-dev \
-                       fribidi-dev
+                       fribidi-dev \
+                       postgresql-dev
+
 
 COPY requirements.txt /td_api
 
@@ -26,5 +28,4 @@ COPY . /td_api
 
 EXPOSE 8080
 
-# CMD ["python", "./app.py"]
-ENTRYPOINT ["flask", "run", "--host", "0.0.0.0", "--port", "5000"]
+CMD ["python", "./app.py"]
