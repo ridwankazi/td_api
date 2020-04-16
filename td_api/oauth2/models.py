@@ -13,7 +13,7 @@ class OauthTokens(db.Model):
                       index=True,
                       unique=True,
                       nullable=False)
-    created = db.Column(db.DateTime,
+    last_set_datetime = db.Column(db.DateTime,
                         index=False,
                         unique=False,
                         nullable=False)

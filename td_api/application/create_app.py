@@ -24,6 +24,7 @@ def create_app():
         # Register blueprints
         app.register_blueprint(routes.oauth2_routes)
             
+        # Connect to DB
         tries = 1
         while tries <= 5:
             try:
@@ -38,8 +39,6 @@ def create_app():
                 print(e)
                 time.sleep(1)
                 tries += 1
-        
-
         print("\n========== DB CONNECTED ========== ")
 
         return app

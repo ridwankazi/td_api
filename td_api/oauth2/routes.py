@@ -1,19 +1,18 @@
-import requests
 from flask import Blueprint, request, redirect
 from td_client.auth_utils import TDAuthSupport
-from .models import db, OauthTokens
 from datetime import datetime
+import requests
 
 oauth2_routes = Blueprint('oauth2', __name__, template_folder='templates', static_folder='static')
 
 @oauth2_routes.route('/secondroute', methods=['GET'])
 def hello1():
-    import ipdb; ipdb.set_trace()
+    TDAuthSupport.get_refreshed_tokens()
     return "sup1"
 
-@oauth2_routes.route('/oauth_redirect', methods=['GET'])
-def oauth_redirect():
-    url = TDAuthSupport.get_oauth_redirect_url()
+@oauth2_routes.route('/oauth_start', methods=['GET'])
+def oauth_start():
+    url = TDAuthSupport.get_oauth_start_url()
     return redirect(url)
 
 @oauth2_routes.route('/oauth_callback', methods=['GET'])
@@ -32,15 +31,7 @@ def oauth_callback():
 
     if resp.ok:
         tokens_dict = resp.json()
-        access_token = tokens_dict.get('access_token')
-        refresh_token = tokens_dict.get('refresh_token')
-        new_tokens = OauthTokens(
-            access_token=access_token,
-            refresh_token=refresh_token,
-            created=datetime.now()
-        )        
-        db.session.add(new_tokens)
-        db.session.commit()
+        TDAuthSupport.save_tokens(tokens_dict)
         return "Tokens saved"
     
     return "Error saving tokens"
