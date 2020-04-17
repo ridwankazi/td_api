@@ -19,10 +19,12 @@ def create_app():
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     with app.app_context():
-        from oauth2 import routes
+        from oauth2.routes import oauth2_routes
+        from options.routes import options_routes
 
         # Register blueprints
-        app.register_blueprint(routes.oauth2_routes)
+        app.register_blueprint(oauth2_routes)
+        app.register_blueprint(options_routes)
             
         # Connect to DB
         tries = 1
@@ -35,7 +37,7 @@ def create_app():
                 break
             except Exception as e:
                 print("\n========== DB CONNECTION FAILED ========== ")
-                print(f"\n========== Error ========== ")
+                print(f"\n========== Errors ========== ")
                 print(e)
                 time.sleep(1)
                 tries += 1

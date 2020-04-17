@@ -65,7 +65,7 @@ class TDAuthSupport:
         
         if cls.access_token_expired():
             tokens = cls.get_refreshed_tokens()
-            access_token = tokens.get("access_token")
+            access_token = tokens.access_token
         else:
             access_token = cls.get_current_tokens().access_token
             
