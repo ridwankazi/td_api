@@ -10,5 +10,4 @@ class TDClientAdapter(TDClient):
     
     @tokens_refreshed
     def get_options_chain(self, *args, **kwargs):
-        
         return self.options(*args, **kwargs)

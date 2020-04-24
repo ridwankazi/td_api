@@ -2,12 +2,12 @@
 class OptionsSupport:
 
     @classmethod
-    def volume_sorted_contracts(cls, prices_dict):
-        return {k:v for k,v in sorted(prices_dict.items(), key=lambda item: item[1][0]['totalVolume'], reverse=True)}
+    def sorted_contracts_by(cls, desired_sorting_field, prices_dict):
+        return {k:v for k,v in sorted(prices_dict.items(), key=lambda item: item[1][0][desired_sorting_field], reverse=True)}
 
     @classmethod
-    def open_interest_sorted_contracts(cls, prices_dict):
-        return {k:v for k,v in sorted(prices_dict.items(), key=lambda item: item[1][0]['openInterest'], reverse=True)}
+    def higest_volume_contracts_accross_dates(cls, volume_summary_dict):
+        return {k:v[0] for k,v in sorted(volume_summary_dict.items(), key=lambda item: item[1][0]['volume'], reverse=True)}
         
     @classmethod
     def get_top_ten_prices(cls,prices_dict):
