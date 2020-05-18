@@ -1,4 +1,23 @@
 {
     "python.pythonPath": "/usr/bin/python3",
-    "python.linting.enabled": true
+    "python.linting.enabled": true,
+    "workbench.colorCustomizations": {
+        "activityBar.activeBackground": "#75c947",
+        "activityBar.activeBorder": "#3a6bc5",
+        "activityBar.background": "#75c947",
+        "activityBar.foreground": "#15202b",
+        "activityBar.inactiveForeground": "#15202b99",
+        "activityBarBadge.background": "#3a6bc5",
+        "activityBarBadge.foreground": "#e7e7e7",
+        "statusBar.background": "#5dab32",
+        "statusBar.border": "#5dab32",
+        "statusBar.foreground": "#15202b",
+        "statusBarItem.hoverBackground": "#488426",
+        "titleBar.activeBackground": "#5dab32",
+        "titleBar.activeForeground": "#15202b",
+        "titleBar.border": "#5dab32",
+        "titleBar.inactiveBackground": "#5dab3299",
+        "titleBar.inactiveForeground": "#15202b99"
+    },
+    "peacock.color": "#5dab32"
 }

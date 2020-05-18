@@ -6,8 +6,8 @@ class OptionsSupport:
         return {k:v for k,v in sorted(prices_dict.items(), key=lambda item: item[1][0][desired_sorting_field], reverse=True)}
 
     @classmethod
-    def higest_volume_contracts_accross_dates(cls, volume_summary_dict):
-        return {k:v[0] for k,v in sorted(volume_summary_dict.items(), key=lambda item: item[1][0]['volume'], reverse=True)}
+    def highest_summary_dicts_accross_dates_by(cls, summary_dict_field,summary_dict):
+        return {k:v[0] for k,v in sorted(summary_dict.items(), key=lambda item: item[1][0][summary_dict_field], reverse=True)}
         
     @classmethod
     def get_top_ten_prices(cls,prices_dict):

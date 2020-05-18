@@ -44,8 +44,16 @@ def options_summary():
             puts_summary_dict['volume'][exp_date] = OptionsSupport.make_summary_list(vol_sorted_contracts, top_ten_prices_volume)
             puts_summary_dict['open_interest'][exp_date] = OptionsSupport.make_summary_list(oi_sorted_contracts, top_ten_prices_oi)
 
-    calls_higest_volume_contracts_accross_dates = OptionsSupport.higest_volume_contracts_accross_dates(calls_summary_dict['volume'])
-    puts_higest_volume_contracts_accross_dates = OptionsSupport.higest_volume_contracts_accross_dates(puts_summary_dict['volume'])
+    calls_highest_volume_contracts_accross_dates = OptionsSupport.highest_summary_dicts_accross_dates_by('volume', calls_summary_dict['volume'])
+    calls_highest_open_interest_contracts_accross_dates = OptionsSupport.highest_summary_dicts_accross_dates_by('open_interest', calls_summary_dict['open_interest'])
+    
+    puts_highest_volume_contracts_accross_dates = OptionsSupport.highest_summary_dicts_accross_dates_by('volume', puts_summary_dict['volume'])
+    puts_highest_open_interest_contracts_accross_dates = OptionsSupport.highest_summary_dicts_accross_dates_by('open_interest', puts_summary_dict['open_interest'])
 
-    return json.dumps({"calls_higest_volume_contracts_accross_dates": calls_higest_volume_contracts_accross_dates, "puts_higest_volume_contracts_accross_dates": puts_higest_volume_contracts_accross_dates, "calls": calls_summary_dict, "puts": puts_summary_dict})
+    return json.dumps({"calls_highest_volume_contracts_accross_dates": calls_highest_volume_contracts_accross_dates,
+                       "calls_highest_open_interest_contracts_accross_dates": calls_highest_open_interest_contracts_accross_dates, 
+                       "puts_highest_volume_contracts_accross_dates": puts_highest_volume_contracts_accross_dates, 
+                       "puts_highest_open_interest_contracts_accross_dates": puts_highest_open_interest_contracts_accross_dates, 
+                       "calls": calls_summary_dict, 
+                       "puts": puts_summary_dict})
 
